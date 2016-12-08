@@ -49,5 +49,4 @@ for j = 1:_size
     pos(j,2)=coord(j,1);
 end
 
-tsp2Opt();
 
