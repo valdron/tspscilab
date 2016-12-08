@@ -14,13 +14,12 @@ global name dist pos Beta Thigh Tlow;
 //Example 4: 0.9999 10000 0.001 -> 33 644 (~161 000 Versuche)
 //Example 5: 0.9999 10000 0.001 -> 997 (~161 000 Versuche) mit Beta: 0.99999 -> 992 (~1 610 000 Versuche)
 
-Beta = 0.9999;
+Beta = 0.99999;
 Thigh = 10000;
-Tlow = 0.0001;
-tspExamples(4);
+Tlow = 0.001;
+tspExamples(5);
+timer();
 route =  tspSimulatedAnnealing();
 tspDraw(route);
+disp(timer());
 
-
-
-tspExamples(5);

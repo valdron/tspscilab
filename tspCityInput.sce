@@ -1,7 +1,11 @@
 clear;
 exec tspGetCoordFromName.sci;
 exec tspDistOnSphere.sci;
+exec tspDraw.sci;
+exec tspLength.sci;
+exec tsp2Opt.sci;
 
+global name dist pos;
 
 disp "wieviele städte:"
 anzahl = scanf("%d");
@@ -17,20 +21,33 @@ end
 
 
 _size = length(length(name));
-pos = zeros(_size,2);
+coord = zeros(_size,2);
 
 for j = 1:_size
     [lat,lon]=tspGetCoordFromName(name(j));
-    pos(j,1)=lat;
-    pos(j,2)=lon;
+    coord(j,1)=lat;
+    coord(j,2)=lon;
 end
 
 dist = zeros(_size,_size);
 
 for i = 1:_size
     for j = 1:_size
-        dist(i,j) = tspDistOnSphere(pos(i,1) , pos(i,2) , pos(j,1) , pos(j,2));
+        if i == j then
+            dist(i,j) = 0;
+        else
+            dist(i,j) = tspDistOnSphere(coord(i,1) , coord(i,2) , coord(j,1) , coord(j,2));
+        end
    end
 end
 
-disp ende;
+pos = zeros(_size,2);
+
+for j = 1:_size
+    
+    pos(j,1)=coord(j,2);
+    pos(j,2)=coord(j,1);
+end
+
+tsp2Opt();
+
