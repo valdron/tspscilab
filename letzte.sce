@@ -1,4 +1,3 @@
-
 clear;
 exec tspDraw.sci;
 exec tspExamples.sci;
@@ -8,33 +7,24 @@ exec tspGreedy.sci;
 exec tspBruteForce.sci;
 exec tspSimulatedAnnealing.sci;
 exec tspDistOnSphere.sci;
-exec tspGetCoordFromName.sci
 
 global name dist pos Beta Thigh Tlow;
 
-//pos = [48.7433425 9.2562468
-//55.7558260 37.6173000
-//35.6894875 139.6917064
-//-33.8688197 151.2092955
-//-33.9248685 18.4240553
-//-34.6036844 -58.5314522]
+pos = [48.7433425 9.2562468
+55.7558260 37.6173000
+35.6894875 139.6917064
+-33.8688197 151.2092955
+-33.9248685 18.4240553
+-34.6036844 -58.5314522]
 
-name = ['Esslingen'
+name = [
+'Esslingen'
 'Moscow'
 'Tokyo'
 'Sydney'
 'Kapstadt'
 'Buenos Aires'
 ]
-
-pos = [];
-zaehler = 1;
-for n = name
-    pause;
-    [lat,lon]=tspGetCoordFromName(n);
-    pos(n,1)=lat;
-    pos(n,2)=lon;
-end
 
 n = size(name,1);
 dist = zeros(n,n);
@@ -47,3 +37,4 @@ end
 
 
 tour = tsp2Opt();
+
